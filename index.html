@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+
+<div class="container" ng-app="myApp" ng-controller="myCtrl">
+  <h2>Shabdas</h2>
+   <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+    </ul>
+    <br>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="akshara in aksharas">
+        <td ng-bind-html="$sce.trustAsHtml(akshara.Shabda)"></td>
+        <td ng-bind-html="$sce.trustAsHtml(akshara.Description)"></td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope, $http, $sce) {
+	$http.get('http://ravi.beatleanalytics.com/api/akshara/?suffix=cha').then(function(response){ console.log(response);
+	  $scope.aksharas = response.data;
+	  $scope.$sce =$sce;
+	})
+});
+</script>
+
+</body>
+</html>
+
