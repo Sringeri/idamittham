@@ -1,0 +1,4 @@
+1. Index page Should contain only Alphabets. onlfy after clicking on a letter, it should display corresponding Word list.
+2. Pagination is to be done in Word list. It is showing only 10 records now.
+3. Link from each description page is to be given back to main alpabet, from there to main page.
+4. search/filter facility is to be added on each alpabets main page.
